@@ -37,11 +37,17 @@
                     <strong data-pm-total></strong>
                 </div>
 
+                <div class="field">
+                    <label for="pm-location">Ubicación / dirección <span class="muted small">(opcional)</span></label>
+                    <input id="pm-location" type="text" class="input" maxlength="250" autocomplete="street-address"
+                           placeholder="Barrio, calle, número y una referencia" data-pm-location>
+                </div>
+
                 @if ($whatsapp)
                     <a class="btn btn-go btn-block pmodal-order" href="#" target="_blank" rel="noopener" data-pm-order>
                         @include('partials.chat-icon') <span>Pedir por WhatsApp</span>
                     </a>
-                    <p class="pmodal-note">Se abrirá WhatsApp con tu pedido listo: producto, descripción, cantidad y total. Solo tienes que enviarlo.</p>
+                    <p class="pmodal-note">Se abrirá WhatsApp con tu pedido y la ubicación indicada. Solo tienes que enviarlo.</p>
                 @else
                     <button type="button" class="btn btn-block" disabled>Pedidos no disponibles por ahora</button>
                 @endif

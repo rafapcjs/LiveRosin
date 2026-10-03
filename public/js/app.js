@@ -517,6 +517,7 @@
         if (modal && typeof modal.showModal === 'function') {
             var pm = function (sel) { return $(sel, modal); };
             var qtyIn = pm('[data-pm-qty]');
+            var locationIn = pm('[data-pm-location]');
             var orderBtn = pm('[data-pm-order]');
             var wa = modal.getAttribute('data-wa');
             var MAX_QTY = 99;
@@ -547,6 +548,8 @@
                     lines.push('• Cantidad: ' + qty);
                     lines.push('• Precio unitario: ' + money(price));
                     lines.push('• Total: ' + money(total));
+                    var location = locationIn ? locationIn.value.trim() : '';
+                    if (location) lines.push('• Ubicación / dirección: ' + location);
                     orderBtn.href = 'https://wa.me/' + wa + '?text=' + encodeURIComponent(lines.join('\n'));
                 }
             };
@@ -575,6 +578,7 @@
                 modal.classList.toggle('is-sold-out', !canOrder);
 
                 qtyIn.value = 1;
+                if (locationIn) locationIn.value = '';
                 updateOrder();
             };
 
@@ -615,6 +619,7 @@
             pm('[data-pm-plus]').addEventListener('click', function () { qtyIn.value = clampQty(clampQty(qtyIn.value) + 1); updateOrder(); });
             qtyIn.addEventListener('input', updateOrder);
             qtyIn.addEventListener('blur', function () { qtyIn.value = clampQty(qtyIn.value); updateOrder(); });
+            if (locationIn) locationIn.addEventListener('input', updateOrder);
             if (orderBtn) orderBtn.addEventListener('click', updateOrder);
         }
 
