@@ -47,11 +47,16 @@
 
             @if (! $item->canOrder)
                 <button type="button" class="btn btn-block" disabled>Producto agotado</button>
-            @elseif ($url = $item->whatsappUrl($whatsapp))
-                {{-- Sin JavaScript abre WhatsApp directo; con JavaScript abre el detalle para elegir cantidad. --}}
-                <a href="{{ $url }}" class="btn btn-block btn-order" target="_blank" rel="noopener" data-open-product>
-                    @include('partials.chat-icon') <span>Pedir por WhatsApp</span>
-                </a>
+            @elseif ($item->whatsappUrl($whatsapp))
+                <div class="cart-card-controls" data-cart-card-controls hidden>
+                    <button type="button" data-cart-card-minus aria-label="Quitar una unidad">−</button>
+                    <span><strong data-cart-card-qty>1</strong> en el carrito</span>
+                    <button type="button" data-cart-card-plus aria-label="Agregar una unidad">+</button>
+                </div>
+                <button type="button" class="cart-add" data-cart-add aria-label="Agregar {{ $item->name }} al carrito">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/><path d="M15 5v6M12 8h6"/></svg>
+                    <span data-cart-add-label>Agregar al carrito</span>
+                </button>
             @else
                 <button type="button" class="btn btn-block" disabled>Pedidos no disponibles por ahora</button>
             @endif

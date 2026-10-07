@@ -28,6 +28,15 @@
             @endforeach
         </ul>
 
+        <p class="drawer-title">Mi compra</p>
+        <button type="button" class="drawer-cart" data-cart-open aria-label="Ver carrito">
+            <span class="drawer-cart-icon" aria-hidden="true">🛒</span>
+            <span class="drawer-cart-copy">
+                <strong>Ver carrito</strong>
+                <small><span data-cart-menu-count>0</span> productos · <span data-cart-menu-total>$ 0</span></small>
+            </span>
+        </button>
+
         <p class="drawer-title">La tienda</p>
         <ul class="drawer-list">
             <li><a href="#inicio" class="drawer-link" data-menu-go>Inicio</a></li>
@@ -36,10 +45,5 @@
             <li><a href="#contacto" class="drawer-link" data-menu-go>Contacto</a></li>
         </ul>
 
-        @if ($waGeneral)
-            <a href="{{ $waGeneral }}" class="btn btn-go btn-block drawer-wa" target="_blank" rel="noopener">
-                @include('partials.chat-icon') <span>Pedir por WhatsApp</span>
-            </a>
-        @endif
     </nav>
 </div>

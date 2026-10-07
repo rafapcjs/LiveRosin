@@ -91,16 +91,17 @@ it('muestra el estado según el stock y el umbral de Ajustes', function () {
         ->and($card('Producto C'))->toMatch('/badge-danger">Agotado</');
 });
 
-it('el botón de WhatsApp lleva el mensaje prellenado y el agotado queda deshabilitado', function () {
+it('muestra el botón de carrito y mantiene deshabilitado el producto agotado', function () {
     setStore();
     Product::factory()->create(['name' => 'Ron Viejo', 'price' => 65000, 'stock' => 5]);
     Product::factory()->create(['name' => 'Tequila', 'price' => 98000, 'stock' => 0]);
 
     $html = adult()->get('/')->getContent();
 
-    expect($html)->toContain('https://wa.me/573001234567?text='.rawurlencode('Hola, quiero pedir: Ron Viejo - $ 65.000'))
+    expect($html)->toContain('data-cart-add')
+        ->toContain('aria-label="Agregar Ron Viejo al carrito"')
         ->toContain('<button type="button" class="btn btn-block" disabled>Producto agotado</button>')
-        ->not->toContain(rawurlencode('Hola, quiero pedir: Tequila'));
+        ->not->toContain('aria-label="Agregar Tequila al carrito"');
 });
 
 it('filtra por categoría con un parámetro en la dirección', function () {

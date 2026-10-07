@@ -24,6 +24,12 @@
             <a href="#como-pedir">Cómo pedir</a>
             <a href="#contacto">Contacto</a>
         </nav>
+        <button type="button" class="cart-btn" data-cart-open aria-label="Abrir carrito">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
+            <span class="cart-label">Ver carrito</span>
+            <span class="cart-count" data-cart-count hidden>0</span>
+            <span class="cart-top-total" data-cart-top-total hidden></span>
+        </button>
         <form class="search" method="GET" action="{{ url('/') }}#productos" role="search" data-search-form>
             <label for="buscar" class="visually-hidden">Buscar productos</label>
             <input id="buscar" name="q" type="search" placeholder="Buscar" value="{{ $search }}"
@@ -36,6 +42,8 @@
 
     @include('catalog._drawer')
     @include('catalog._product-modal')
+    @include('catalog._cart-modal')
+    <div class="cart-toast" data-cart-toast role="status" aria-live="polite" hidden></div>
 
     <section id="inicio" class="hero">
         <div class="grain" aria-hidden="true"></div>
@@ -151,17 +159,27 @@
                 <div class="step">
                     <div class="step-num outline">01</div>
                     <h3>Escoge tu producto</h3>
-                    <p>Mira el menú y toca «Pedir» en el que quieras.</p>
+                    <p>Mira el menú y toca «Agregar al carrito» en el producto que quieras.</p>
                 </div>
                 <div class="step">
                     <div class="step-num outline">02</div>
-                    <h3>Escríbenos</h3>
-                    <p>Se abre WhatsApp con tu pedido listo. Lo envías y confirmamos disponibilidad.</p>
+                    <h3>Elige la cantidad</h3>
+                    <p>Selecciona cuántas unidades quieres y agrégalas al carrito.</p>
                 </div>
                 <div class="step">
                     <div class="step-num outline">03</div>
+                    <h3>Revisa tu carrito</h3>
+                    <p>Abre «Ver carrito» para editar cantidades, eliminar productos y confirmar el total.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num outline">04</div>
+                    <h3>Finaliza por WhatsApp</h3>
+                    <p>Toca «Finalizar compra», revisa el mensaje y envíalo. Coordinamos la entrega y verificamos la edad.</p>
+                </div>
+                <div class="step step-note">
+                    <div class="step-num outline">05</div>
                     <h3>Te llega al barrio</h3>
-                    <p>Coordinamos la entrega por WhatsApp. Se verifica la edad al entregar.</p>
+                    <p>Coordinamos la entrega por WhatsApp. Recuerda tener lista tu ubicación si deseas compartirla.</p>
                 </div>
             </div>
         </div>

@@ -78,7 +78,7 @@ docker compose exec app php artisan migrate --seed
 docker compose exec app php artisan storage:link
 ```
 
-Listo:
+Listo:ñ
 
 - Catálogo: <http://localhost:8000>
 - Panel: <http://localhost:8000/admin> (entra con el `ADMIN_EMAIL` y `ADMIN_PASSWORD` de tu `.env`)
