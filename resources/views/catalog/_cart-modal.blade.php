@@ -5,7 +5,11 @@
         </button>
         <h2 id="cart-title" class="cart-title">Mi carrito</h2>
         <div class="cart-items" data-cart-items></div>
-        <p class="cart-empty" data-cart-empty>Tu carrito está vacío.</p>
+        <div class="cart-empty" data-cart-empty>
+            <strong>Tu carrito está vacío</strong>
+            <p>Agrega productos para comenzar tu pedido.</p>
+            <button type="button" class="btn btn-dark btn-block" data-cart-products>Ver productos</button>
+        </div>
         <div class="cart-summary" data-cart-summary hidden>
             <span>Total</span><strong data-cart-total></strong>
         </div>

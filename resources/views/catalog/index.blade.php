@@ -44,6 +44,11 @@
     @include('catalog._product-modal')
     @include('catalog._cart-modal')
     <div class="cart-toast" data-cart-toast role="status" aria-live="polite" hidden></div>
+    <button type="button" class="mobile-cart-bar" data-cart-open aria-label="Ver carrito" hidden>
+        <span>🛒 <strong>Mi carrito</strong></span>
+        <span><span data-mobile-cart-count>0</span> productos · <strong data-mobile-cart-total>$ 0</strong></span>
+        <span class="mobile-cart-bar-action">Ver carrito</span>
+    </button>
 
     <section id="inicio" class="hero">
         <div class="grain" aria-hidden="true"></div>
