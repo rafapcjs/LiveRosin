@@ -833,8 +833,12 @@
             if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth' });
         });
         if (cartLocation) cartLocation.addEventListener('input', saveCart);
-        if (cartOrder) cartOrder.addEventListener('click', function () {
+        if (cartOrder) cartOrder.addEventListener('click', function (event) {
+            var orderUrl = cartOrder.href;
+            if (!orderUrl || cartCount() === 0) return;
+            event.preventDefault();
             clearCart();
+            window.open(orderUrl, '_blank', 'noopener');
             showCartToast('¡Pedido preparado! WhatsApp se abrió. Envíalo para confirmar.');
         });
         grid.addEventListener('click', function (e) {
